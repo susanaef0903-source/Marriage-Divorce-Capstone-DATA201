@@ -1,0 +1,174 @@
+CAPSTONE PRESENTATION SCRIPT
+Marriage and Divorce in America
+Susana Fernandez Rivera - DATA 201
+
+Read one block per slide. About 30 seconds each = 6 to 7 minutes.
+Press the right arrow key in PowerPoint to go to the next slide.
+
+============================================================
+SLIDE 1: Marriage and Divorce in America
+============================================================
+Hi, my name is Susana Fernandez Rivera. This is my DATA 201
+capstone project. I looked at marriage and divorce in
+America: how the rates have changed over time, whether 2019
+was any different, and what divorced people have in common.
+I used Python, pandas, matplotlib, and scipy for everything
+you are about to see.
+
+============================================================
+SLIDE 2: Three research questions
+============================================================
+I had three research questions. One: how have marriage and
+divorce rates changed over time, and how does New York
+compare to the rest of the country? Two: was 2019 different
+from the trend? And three: what do divorced people have in
+common? The first question uses national and state data over
+almost twenty years. The second and third use a survey of
+New Yorkers from 2019.
+
+============================================================
+SLIDE 3: Two data sources
+============================================================
+I used two data sources. The first is from the CDC: national
+marriage and divorce rates from 2000 to 2017, and rates for
+every state going back to 1990. These came as Excel files
+with footnotes, blank rows, and missing values that I had to
+clean. The second is the Census Bureau's American Community
+Survey for 2019, for New York State. That file has one row
+per person, almost 200,000 people, with their age, sex,
+marital status, whether they married or divorced in the past
+year, their education, and their income. Each person has a
+weight, so when I add them up they represent the full 19.5
+million people in New York.
+
+============================================================
+SLIDE 4: How I did it
+============================================================
+My process had five steps. First I loaded the files with
+pandas. Then I cleaned them: I cut the tables out of the
+Excel sheets, stripped footnote numbers off the years and
+state names, converted text to numbers, reshaped the state
+data from wide to long, and merged everything into clean
+tables. Then I described the data with summary statistics
+and percent changes, and for the Census data I used the
+person weights. I visualized everything with matplotlib. And
+finally I tested whether the patterns were real using linear
+regression, a paired t-test, a chi-square test, and a two-
+sample t-test. All of it is in one Jupyter notebook on
+GitHub.
+
+============================================================
+SLIDE 5: Q1: Both rates fell in the U.S., 2000 to 2017
+============================================================
+For the first question: from 2000 to 2017, both the marriage
+rate and the divorce rate in the United States went down.
+Marriages dropped from 8.2 to 6.9 per thousand people, about
+16 percent. Divorces dropped from 4.0 to 2.9, about 28
+percent, so divorce actually fell faster than marriage. I
+ran a linear regression on each line, and both slopes are
+significant with p-values under 0.001. These are real
+trends, not random year-to-year noise.
+
+============================================================
+SLIDE 6: Q1: New York has fewer divorces than the U.S.
+============================================================
+New York followed the same downward path, but with
+consistently fewer divorces than the country. In every
+single one of the 18 years, New York's divorce rate was
+below the U.S. rate, by about 0.6 divorces per thousand on
+average. A paired t-test confirms that difference is
+significant. For marriage, New York started below the U.S.
+average in the early 2000s but moved above it around 2011.
+By 2017 New York ranked 12th out of 51 for marriage, and
+32nd out of the 46 states that report divorces.
+
+============================================================
+SLIDE 7: Q2: 2019 was right on the trend, not different
+============================================================
+Second question: was 2019 different? No. The CDC data stops
+at 2017, so for 2019 I used the Census survey. The survey
+asks each person whether they got married or divorced in the
+past 12 months. Because every marriage or divorce involves
+two people, I divided the counts by two, and I used the
+whole population as the denominator, the same way the CDC
+does. That gives New York about 6.5 marriages and 2.3
+divorces per thousand people in 2019, a small step down from
+7.3 and 2.7 in 2017. That is exactly what the long, slow
+decline would predict. Nothing about 2019 stands out. One
+more fact from that year: fewer than half of New York
+adults, about 47 percent, were married, and about 9 percent
+were divorced.
+
+============================================================
+SLIDE 8: Q3: Divorced vs. married New Yorkers
+============================================================
+Third question: what do divorced people have in common? I
+compared adults who are currently divorced with adults who
+are currently married. Divorced New Yorkers are about five
+years older on average, 57 and a half versus 52 and a half.
+Sixty percent are women, compared with fifty percent of
+married adults. They earn about 14,000 dollars less per year
+on average, and a t-test shows that gap is statistically
+significant. They are less likely to have a bachelor's
+degree, 31 percent versus 41 percent. And one in five has
+been married more than once.
+
+============================================================
+SLIDE 9: Q3: Divorce peaks in the 50s and 60s
+============================================================
+Looking at age: I limited this to people who have ever been
+married, so young adults who never married don't drag the
+numbers down. The share who are currently divorced climbs
+steadily: 5 percent in their twenties, about 9 percent in
+their thirties, 13 and a half in their forties, and about 18
+percent in their fifties and sixties. It dips after 70, but
+that is mostly because widowhood takes over at that age, not
+because older people divorce less.
+
+============================================================
+SLIDE 10: Q3: Education matters, but not in a straight line
+============================================================
+Education: I expected a straight line, more education, less
+divorce, but that is not what the data shows. Adults with
+some college or an associate degree have the highest share
+currently divorced, almost 18 percent. Adults with a
+bachelor's degree or higher have the lowest, 12 percent.
+People with less than high school are in the middle. A chi-
+square test confirms that education and divorce are related,
+with a p-value under 0.001, so this pattern is not random.
+
+============================================================
+SLIDE 11: What I found
+============================================================
+So, to sum up. One: marriage and divorce both declined from
+2000 to 2017, and divorce fell faster. New York had fewer
+divorces than the country in every year. Two: 2019 was not
+special. New York's 2019 numbers sit right on that downward
+trend. Three: in New York, divorced adults are older, more
+often women, earn about 14,000 dollars less, and are less
+likely to have a bachelor's degree. Divorce peaks in the
+fifties and sixties.
+
+============================================================
+SLIDE 12: Limitations and next steps
+============================================================
+A few limitations. The CDC's national divorce rate leaves
+out states that don't report divorces, like California. The
+CDC data ends in 2017 and the Census data is just 2019, so
+they measure slightly different things. The Census tells me
+who is divorced right now, not who got divorced, so someone
+who divorced and remarried counts as married. And these are
+patterns, not causes. Being older or earning less does not
+cause divorce; a divorce can also cause lower income,
+especially for women. If I kept going, I would add the CDC
+data through 2023 to see what the pandemic did to the trend,
+and use several years of Census data to follow the same age
+groups over time.
+
+============================================================
+SLIDE 13: Data sources and references
+============================================================
+These are my data sources and references. The full notebook
+and all the code are on my GitHub. Thank you.
+
+(About 1104 words total, roughly 8 minutes at a calm pace.)
